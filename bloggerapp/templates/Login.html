@@ -1,0 +1,29 @@
+{% extends '_imports.html' %}
+{% block controlpanel %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+<form  method="post">
+  {% csrf_token %}
+ <div class="text-center text-secondary h1 p-4">
+    تسجيل الدخول
+   </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control my-2" id="floatingInput" placeholder="اسم المستخدم" name="username">
+      <label for="floatingInput">اسم المستخدم</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control my-2" id="floatingPassword" placeholder="كلمة المرور" name="password">
+      <label for="floatingPassword">كلمة المرور</label>
+    </div> 
+    <button class="w-100 btn btn-lg btn-primary my-2" type="submit" value="Submit">تسجيل الدخول</button>
+    <div class="d-grid gap-2"> 
+      <a href="/" class="btn btn-primary my-3">مدونتي</a>
+  </div>
+  </form>
+
+
+{% endblock %}

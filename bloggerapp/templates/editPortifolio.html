@@ -1,0 +1,43 @@
+{% extends 'editNavbar.html' %}
+{% block content %}   
+{% load static %}
+
+<form class="mt-5">  
+    <div class="text-center text-secondary h1 p-4 mt-5">
+        الشركات السابقة
+   </div> 
+   <div class="d-grid gap-2"> 
+    <a class="btn btn-primary my-3"  href="addNewPortifolio">اضافة مشروع جديدة</a>
+    </div>
+    <div class="col-md-12" style="overflow-x: auto">
+    <table class="table table-dark">
+        <thead>
+
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col"> اسم المشروع</th>
+            <th scope="col">التفاصيل </th>
+            <th scope="col">الادوات </th>
+            <th scope="col">الاوامر</th>
+          </tr>
+
+        </thead>
+        <tbody>
+          {% for x in myportfolios %}
+          <tr>
+
+            <th scope="row">{{ x.id }}</th>
+            <td style="min-width: 150px;max-width: 300px;" >{{ x.projecttitel }}</td>
+            <td style="min-width: 150px;max-width: 300px;">{{ x.tools }}</td>
+            <td style="min-width: 150px;max-width: 300px;">{{ x.details }}</td>
+            <td >
+              <a  class="btn btn-light" href="deletePortifolioRow/{{ x.id }}">حذف</a>
+            </td>
+          </tr>
+           {% endfor %}
+        </tbody>
+    </table> 
+  </div>
+</form>
+
+{% endblock content %}

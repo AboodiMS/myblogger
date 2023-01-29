@@ -1,0 +1,38 @@
+{% extends 'editNavbar.html' %}
+{% block content %}   
+{% load static %}
+
+<form class="mt-5">  
+    <div class="text-center text-secondary h1 p-4 mt-5">
+        تواصل معي
+   </div> 
+   <div class="d-grid gap-2"> 
+    <div class="col-md-12" style="overflow-x: auto">
+      <table class="table table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col"> الاسم</th>
+              <th scope="col">الايميل</th>
+              <th scope="col">الرسالة</th>
+              <th scope="col">الاوامر</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in mymessages %}
+            <tr>
+              <th scope="row">{{ x.id }}</th>
+              <td style="min-width: 150px;max-width: 300px;">{{ x.name }}</td>
+              <td style="min-width: 150px;max-width: 300px;">{{ x.email }}</td>
+              <td style="min-width: 150px;max-width: 300px;">{{ x.message }}</td>
+              <td>
+                  <a class="btn btn-light" href="deleteMessageRow/{{ x.id }}">حذف</a>
+              </td>
+            </tr>
+            {%  endfor  %}
+          </tbody>
+      </table> 
+    </div>
+    </form>
+
+{% endblock content %}

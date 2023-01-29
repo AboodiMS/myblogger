@@ -1,0 +1,18 @@
+{% extends 'editNavbar.html' %}
+{% block content %}   
+{% load static %}
+
+<form class="mt-5" action="addNewPortifolioRow" method="post">  
+  {% csrf_token %}
+     <div class="text-center text-secondary h1 p-4 mt-5" >
+          المشروع
+     </div>
+     <input type="text" class="form-control my-3"  placeholder="عنوان المشروع" name="projecttitel" >  
+     <input type="text" class="form-control my-3"  placeholder="الادوات" name="tools" > 
+     <input type="text" class="form-control my-3"  placeholder="التفاصيل" name="details" >   
+     <div class="d-grid gap-2"> 
+     <button type="submit" value ="Submit" class="btn btn-primary my-3">حفظ</button>
+     </div>
+</form>
+
+{% endblock content %} 

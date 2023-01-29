@@ -1,0 +1,137 @@
+{% extends 'editNavbar.html' %}
+{% load static %}
+{% block content %}   
+
+
+
+
+ <form class="mt-5"> 
+    <div class="text-center text-secondary h1 p-4 mt-5">
+        الغلاف
+   </div> 
+   <div class="d-grid gap-2"> 
+    <a class="btn btn-primary my-3" href="addNewCover/">اضافة غلاف جديدة</a>
+   </div>
+   <div class="col-md-12" style="overflow-x: auto">
+    <table class="table table-striped table-dark " >
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">العنوان</th>
+            <th scope="col">التفاصيل</th>
+            <th scope="col">الاوامر</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for x in mycovers %}
+          <tr>
+            <th scope="row">{{ x.id }}</th>
+            <td style="min-width: 150px;max-width: 300px;">{{ x.titel }}</td>
+            <td style="min-width: 150px;max-width: 300px;">{{ x.details }}</td>
+            <td>
+                 <a class="btn btn-light" href="deleteCoverRow/{{ x.id }}">حذف</a> 
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</form> 
+
+<form class="mt-5" action="savePersonalInformation" method="Post" >
+  {% csrf_token %}
+    <div class="text-center text-secondary h1 p-4 mt-5">
+         معلومات شخصية
+    </div>
+    <input type="text" class="form-control my-3"  placeholder="الاسم الكامل" name="fullname" value="{{ myprofile.fullname }}">  
+    <input type="text" class="form-control my-3"  placeholder="المواليد" name="birthday" value="{{ myprofile.birthday }}">  
+    <input type="text" class="form-control my-3"  placeholder="السكن"name="livingin" value="{{ myprofile.livingin }}">  
+   
+    <div class="d-grid gap-2"> 
+      <button type="submit" value="Submit" class="btn btn-primary my-3">حفظ</button>
+    </div>
+</form>
+
+<form class="mt-5" action="saveStudyInformation" method="Post">  
+  {% csrf_token %}
+    <div class="text-center text-secondary h1 p-4 mt-5" >
+        الدراسة
+   </div>
+   <input type="text" class="form-control my-3"  placeholder="الجامعة" name="university" value="{{ myprofile.university }}">  
+   <input type="text" class="form-control my-3"  placeholder="الكلية" name="college" value="{{ myprofile.college }}">  
+   <input type="text" class="form-control my-3"  placeholder="القسم" name="department" value="{{ myprofile.department }}">  
+   <input type="text" class="form-control my-3"  placeholder="سنة التخرج" name="yearofgraduation" value="{{ myprofile.yearofgraduation }}"> 
+   <div class="d-grid gap-2"> 
+    <button type="submit" value ="Submit" class="btn btn-primary my-3">حفظ</button>
+    </div>
+</form>
+
+<form class="mt-5">  
+    <div class="text-center text-secondary h1 p-4 mt-5">
+        مهاراتي
+   </div> 
+   <div class="d-grid gap-2"> 
+    <a  class="btn btn-primary my-3"  href="addNewSkill">اضافة مهارة جديدة</a>
+   </div>
+   <div class="col-md-12" style="overflow-x: auto">
+    <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">المهارة</th>
+            <th scope="col">الاوامر</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for x in myskills %}
+          <tr>
+            <th scope="row">{{ x.id }}</th>
+            <td style="min-width: 150px;max-width: 300px;">{{x.skillname}}</td>
+            <td>
+              <a class="btn btn-light" href="deleteSkillRow/{{ x.id }}">حذف</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table> 
+  </div>
+</form>
+
+
+<form class="mt-5">  
+  <div class="text-center text-secondary h1 p-4 mt-5">
+      الشركات السابقة
+ </div> 
+ <div class="d-grid gap-2"> 
+  <a  class="btn btn-primary my-3" href="addNewExCompany">اضافة شركة جديدة</a>
+</div>
+<div class="col-md-12" style="overflow-x: auto">
+  <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">الشركة</th>
+          <th scope="col">المسمى الوظيفي</th>
+          <th scope="col"> التفاصيل</th>
+          <th scope="col">الاوامر</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in myexcompanies %}
+        <tr>
+          <th scope="row">{{ x.id }}</th>
+          <td style="min-width: 150px;max-width: 300px;">{{ x.companyname }}</td>
+          <td style="min-width: 150px;max-width: 300px;">{{ x.jobtitle }}</td>
+          <td style="min-width: 150px;max-width: 300px;">{{ x.details }}</td>
+          <td>
+              <a class="btn btn-light" href="deleteExCompanyRow/{{ x.id }}">حذف</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+</div> 
+</form>
+
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+<form class="mt-5" action="addNewMessageRow" method="post">
+       {% csrf_token %}
+     
+      <div class="text-center text-secondary h1 p-4 mt-5">
+           تواصل معي
+      </div>
+      <input type="email" class="form-control my-3"  placeholder="name@example.com" name="email" >
+      <input type="text" class="form-control my-3" placeholder="الاسم" name="name" >     
+      <textarea class="form-control my-3" placeholder="اكتب الرسالة هنا" rows="6"  name="message"></textarea>  
+      <div class="d-grid gap-2">  
+      <button type="submit" value ="Submit" class="btn btn-primary my-3">ارسال</button>
+      </div>
+</form>
+{% endblock content %}

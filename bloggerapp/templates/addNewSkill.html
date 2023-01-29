@@ -1,0 +1,16 @@
+{% extends 'editNavbar.html' %}
+{% block content %}   
+{% load static %}
+
+<form class="mt-5" action="addNewSkillRow" method="post">  
+  {% csrf_token %}
+     <div class="text-center text-secondary h1 p-4 mt-5" >
+          الغلاف
+     </div>
+     <input type="text" class="form-control my-3"  placeholder="العنوان" name="skillname" >  
+     <div class="d-grid gap-2"> 
+     <button type="submit" value ="Submit" class="btn btn-primary my-3">حفظ</button>
+     </div>
+</form>
+
+{% endblock content %} 
